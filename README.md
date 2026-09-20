@@ -6,7 +6,6 @@ A one-page, editable Typst conversion of the supplied `Awesome_CV.pdf`.
 - `template.typ`: typography, header, footer, sections, and entries.
 - `fonts/`: bundled fonts for reproducible rendering.
 - `resume.pdf`: compiled result.
-- `comparison.png`: original on the left, Typst on the right.
 
 ## Build
 
@@ -33,9 +32,10 @@ Actions tab after it is merged. It uses Typst 0.15.0 and the bundled fonts,
 without relying on system fonts. Download the `resume-pdf` artifact from a
 successful workflow run to get the compiled `resume.pdf`.
 
-CI writes its output to `build/`. The checked-in PDF and preview images are
-reference snapshots; CI does not update them automatically. The original
-LaTeX archive and PDF are kept in `reference/` for comparison.
+CI writes its output to `build/`. The checked-in PDF is a reference snapshot;
+CI does not update it automatically. Local preview and comparison images are
+ignored by Git. The original LaTeX archive and PDF are kept in `reference/`
+for comparison.
 
 ## Editing
 
