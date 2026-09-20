@@ -1,24 +1,25 @@
 # Resume in Typst
 
-A one-page, editable Typst conversion of the supplied `Awesome_CV.pdf`.
+A one-page, editable Typst resume adapted from Awesome-CV.
 
 - `resume.typ`: personal details and resume content.
 - `template.typ`: typography, header, footer, sections, and entries.
 - `fonts/`: bundled fonts for reproducible rendering.
-- `resume.pdf`: compiled result.
 
 ## Build
 
 With Typst 0.15.0:
 
 ```sh
-typst compile --ignore-system-fonts --font-path fonts resume.typ resume.pdf
+mkdir -p build
+typst compile --ignore-system-fonts --font-path fonts resume.typ build/resume.pdf
 ```
 
 For live preview:
 
 ```sh
-typst watch --ignore-system-fonts --font-path fonts resume.typ resume.pdf
+mkdir -p build
+typst watch --ignore-system-fonts --font-path fonts resume.typ build/resume.pdf
 ```
 
 On the Typst web app, upload this directory including `fonts/`, then open
@@ -32,22 +33,17 @@ Actions tab after it is merged. It uses Typst 0.15.0 and the bundled fonts,
 without relying on system fonts. Download the `resume-pdf` artifact from a
 successful workflow run to get the compiled `resume.pdf`.
 
-CI writes its output to `build/`. The checked-in PDF is a reference snapshot;
-CI does not update it automatically. Local preview and comparison images are
-ignored by Git. The original LaTeX archive and PDF are kept in `reference/`
-for comparison.
+Local builds and CI write the PDF to `build/`. Generated PDFs, preview and
+comparison images, and local conversion references are not tracked by Git.
 
 ## Editing
 
 Edit content in `resume.typ`. Sections and entries use normal document flow,
 so text can wrap and move subsequent entries when edited. Each entry stays
-together across page breaks. The date is deliberately fixed to September 20,
-2026 to match the supplied PDF; update the `date` argument as needed.
+together across page breaks. Update the `date` argument in `resume.typ` as needed.
 
-The layout preserves the original A4 page, margins, colors, font families,
-weights, section rules, contact icons, dashed links, footer, and line breaks.
-Spacing is calibrated to the supplied PDF. Small glyph-width and dash-pattern
-differences can remain between the two typesetting engines.
+The layout uses an A4 page with custom margins, colors, font families,
+weights, section rules, contact icons, dashed links, and a footer.
 
 Colors, fonts, and calibrated spacing are grouped at the top of `template.typ`.
 Contacts use named icons (`phone`, `email`, `home`, `github`, `linkedin`,
